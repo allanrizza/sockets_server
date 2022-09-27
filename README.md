@@ -1,0 +1,1 @@
+# Socket Client Java example for Sockets Communication
