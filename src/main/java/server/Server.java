@@ -23,7 +23,7 @@ public class Server {
         s.close();
     }
 
-    private void treatConnection(Socket socket) {
+    private void treatConnection(Socket socket) throws IOException {
         try {
             ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
@@ -31,7 +31,12 @@ public class Server {
             String msg = input.readUTF();
             System.out.println("Message received.");
             output.writeUTF("This is a Socket Connection example!");
+
+            input.close();
+            output.close();
         } catch(IOException ignore) {
+        } finally {
+            closeSocket(socket);
         }
     }
 
