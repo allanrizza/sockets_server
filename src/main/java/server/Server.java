@@ -19,6 +19,10 @@ public class Server {
         return serverSocket.accept();
     }
 
+    private void closeSocket(Socket s) throws IOException {
+        s.close();
+    }
+
     private void treatConnection(Socket socket) {
         try {
             ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
