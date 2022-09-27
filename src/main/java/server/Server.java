@@ -1,6 +1,9 @@
 package server;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -14,6 +17,14 @@ public class Server {
 
     private Socket waitConnection() throws IOException {
         return serverSocket.accept();
+    }
+
+    private void treatConnection(Socket socket) {
+        try {
+            ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+        } catch(IOException ignore) {
+        }
     }
 
     public static void main(String[] args) {
