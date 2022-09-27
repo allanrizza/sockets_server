@@ -45,6 +45,7 @@ public class Server {
             Server server = new Server();
             server.createServerSocket(5555);
             Socket socket = server.waitConnection();
+            server.treatConnection(socket);
         } catch(IOException ignored) {
         }
 
