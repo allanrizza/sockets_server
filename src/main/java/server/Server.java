@@ -23,6 +23,10 @@ public class Server {
         try {
             ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+
+            String msg = input.readUTF();
+            System.out.println("Message received.");
+            output.writeUTF("This is a Socket Connection example!");
         } catch(IOException ignore) {
         }
     }
